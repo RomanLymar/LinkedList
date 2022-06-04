@@ -17,9 +17,9 @@ class LinkedList:
         if self.head is None:
             self.head = Node(data)
         else:
-            for n in self:
+            for cur in self:
                 pass
-            n.nxt = Node(data)
+            cur.nxt = Node(data)
         return self
 
     def get_node(self, node_index):
@@ -34,13 +34,22 @@ class LinkedList:
         return " -> ".join(map(str, self))
 
     def __iter__(self):
-        n = self.head
-        while n is not None:
-            yield n
-            n = n.nxt
+        return self
+
+    def __next__(self):
+        if self.head is None:
+            raise StopIteration
+        else:
+            current = self.head
+            self.head = self.head.nxt
+            return current
 
 
-l = LinkedList().add(1).add(2).add(3).add(4).add(5).add(6).add(7)
+l = LinkedList()
+l.add(2)
+l.add(3)
+l.add(4)
+
 for el in l:
     print(el)
 print(l)
