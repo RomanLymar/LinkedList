@@ -37,11 +37,11 @@ class LinkedList:
         return self
 
     def __next__(self):
-        if self.head is None:
+        if self.root is None:
             raise StopIteration
         else:
-            current = self.head
-            self.head = self.head.nxt
+            current = self.root
+            self.root = self.root.nxt
             return current
 
 
